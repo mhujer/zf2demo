@@ -25,14 +25,14 @@ if (file_exists('vendor/autoload.php')) {
 if (($zf2Path = getenv('ZF2_PATH') ?: (is_dir('vendor/ZF2/library') ? 'vendor/ZF2/library' : false)) !== false) {
     if (isset($loader)) {
         $loader->add('Zend', $zf2Path . '/Zend');
-    } //else {
+    } else {
         include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
         Zend\Loader\AutoloaderFactory::factory(array(
             'Zend\Loader\StandardAutoloader' => array(
                 'autoregister_zf' => true
             )
         ));
-    //}
+    }
 }
 
 if (!class_exists('Zend\Loader\AutoloaderFactory')) {
