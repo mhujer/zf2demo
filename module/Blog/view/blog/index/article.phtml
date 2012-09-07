@@ -55,14 +55,11 @@ echo $this->form()->openTag($form);
 
 <div class="form_element">
 <fieldset>
-<?php 
-    $name = $form->get('name');
-    echo $this->formLabel()->openTag($name);
-    echo $this->escapeHtml($name->getAttribute('label'));
-    echo $this->formInput($name);
-    echo $this->formElementErrors($name);
-    echo $this->formLabel()->closeTag($name);
-?>
+
+<?php echo $this->formRow($form->get('name'));?>
+<?php echo $this->formRow($form->get('email'));?>
+<?php echo $this->formRow($form->get('text'));?>
+
 </fieldset>
 </div>
 

@@ -5,6 +5,7 @@ use Zend\Form\Form;
 use Zend\Captcha;
 use Zend\Form\Element;
 use Zend\Form\Fieldset;
+use Zend\InputFilter;
     
     
 class AddCommentForm extends Form
@@ -17,9 +18,33 @@ class AddCommentForm extends Form
         
         $this->add(array(
         	'name' => 'name',
-        	'attributes' => array(
+            'attributes' => array(
                 'type'  => 'text',
+            ),
+        	'options' => array(
         		'label' => 'Name',
+            ),
+        ));
+        
+        $this->add(array(
+        	'name' => 'email',
+            'attributes' => array(
+                'type'  => 'email',
+            ),
+        	'options' => array(
+        		'label' => 'E-mail',
+            ),
+        ));
+        
+        $this->add(array(
+        	'name' => 'text',
+        	'attributes' => array(
+                'type'  => 'textarea',
+		        'cols' => 50,
+		        'rows' => 10,
+            ),
+        	'options' => array(
+        		'label' => 'Text',
             ),
         ));
         
@@ -48,5 +73,11 @@ class AddCommentForm extends Form
                 'value' => 'Add comment',
             ),
         ));
+        
+        $inputFilter = new \Zend\InputFilter\InputFilter();
+        $inputFilter->add(new \Zend\InputFilter\Input('name'));
+        $inputFilter->add(new \Zend\InputFilter\Input('email'));
+        $inputFilter->add(new \Zend\InputFilter\Input('text'));
+        $this->setInputFilter($inputFilter);
     }
 }

@@ -29,9 +29,7 @@ class Comments extends TableGateway
 	    		'name' => $name,
 	    		'email' => $email,
 	    		'text' => $text,
-	    		'commented_on' => date('Y-m-d H:i:s'),
- 	    	    //http://framework.zend.com/issues/browse/ZF2-263
-	    		//'commented_on' => new Expression('NOW()'),
+	    		'commented_on' => new Expression('NOW()'),
 	    	)
     	);
     }

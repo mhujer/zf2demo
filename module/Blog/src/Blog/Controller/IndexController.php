@@ -41,25 +41,40 @@ class IndexController extends AbstractActionController
         return $this->articlesTable;
     }
     
+    protected $commentsTable;
+    
+    /**
+	 * @return \Blog\Model\Comments
+	 */
+    public function getCommentsTable()
+    {
+        if (!$this->commentsTable) {
+            $sm = $this->getServiceLocator();
+            $this->commentsTable = $sm->get('Blog\Model\Comments');
+        }
+        return $this->commentsTable;
+    }
+    
     public function articleAction()
     {
     	$articleId = (int) $this->getEvent()->getRouteMatch()->getParam('id');
     	$article = $this->getArticlesTable()->fetchArticle($articleId);
     	
     	$commentForm = new \Blog\Form\AddCommentForm;
-    	/*if ($this->getRequest()->isPost()) {
-    		$postData = $this->getRequest()->post()->toArray();
-            if ($commentForm->isValid($postData)) {
-            	$comments = $this->getLocator()->get('Blog\Model\Comments');
-            	$commentId = $comments->addComment(
+    	if ($this->getRequest()->isPost()) {
+    		$postData = $_POST; //$this->getRequest()->post()->toArray();
+    		$commentForm->setData($postData);
+            if ($commentForm->isValid()) {
+            	$validatedData = $commentForm->getData();
+            	$commentId = $this->getCommentsTable()->addComment(
             		$articleId,
-            		$commentForm->getValue('name'),
-            		$commentForm->getValue('email'),
-            		$commentForm->getValue('text')
+            		$validatedData['name'],
+            		$validatedData['email'],
+            		$validatedData['text']
             	);
-            	$this->redirect()->toRoute('article', array('id' => $articleId));
+            	$this->redirect()->toRoute('blog/article', array('id' => $articleId));
             }
-    	}*/
+    	}
     	
     	return array(
     		'article' => $article,
