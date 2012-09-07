@@ -1,0 +1,29 @@
+
+<!--
+See http://developer.yahoo.com/ypatterns/pattern.php?pattern=searchpagination
+-->
+ 
+<?php if ($this->pageCount): ?>
+<div class="pagination">
+<ul>
+
+<!-- Previous page link -->
+<li<?php echo (isset($this->previous)) ? '' : ' class="disabled"'; ?>>
+  <a href="<?php echo $this->url('blog/page', array('p' => $this->previous)); ?>">&lt; Previous</a>
+</li>
+ 
+<!-- Numbered page links -->
+<?php foreach ($this->pagesInRange as $page): ?>
+  <li<?php echo ($page == $this->current) ? ' class="active"' : ''; ?>>
+    <a href="<?php echo $this->url('blog/page', array('p' => $page)); ?>"><?php echo $page; ?></a>
+  </li>
+<?php endforeach; ?>
+ 
+<!-- Next page link -->
+<li<?php echo (isset($this->next)) ?: ' class="disabled"'; ?>>
+  <a href="<?php echo $this->url('blog/page', array('p' => $this->next)); ?>">Next &gt;</a>
+</li>
+
+</ul>
+</div>
+<?php endif; ?>

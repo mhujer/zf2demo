@@ -1,0 +1,15 @@
+{
+    "name": "zendframework/skeleton-application",
+    "description": "Skeleton Application for ZF2",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "framework",
+        "zf2"
+    ],
+    "homepage": "http://framework.zend.com/",
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "dev-master#1736dd000849a08b9b1ff64bf4f9eb6532407432",
+        "bjyoungblood/BjyProfiler": "dev-master"
+    }
+}
