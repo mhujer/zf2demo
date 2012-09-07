@@ -16,9 +16,7 @@ class AddCommentForm extends Form
         
         $this->setName('comment');
         
-        $this->add($fieldset = new Fieldset('foo'));
-        
-        $fieldset->add(array(
+        $this->add(array(
         	'name' => 'name',
             'attributes' => array(
                 'type'  => 'text',
@@ -28,7 +26,7 @@ class AddCommentForm extends Form
             ),
         ));
         
-        $fieldset->add(array(
+        $this->add(array(
         	'name' => 'email',
             'attributes' => array(
                 'type'  => 'email',
@@ -38,7 +36,7 @@ class AddCommentForm extends Form
             ),
         ));
         
-        $fieldset->add(array(
+        $this->add(array(
         	'name' => 'text',
         	'attributes' => array(
                 'type'  => 'textarea',

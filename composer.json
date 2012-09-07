@@ -22,8 +22,8 @@
                 "name": "ZfcTwitterBootstrap",
                 "source": {
                     "type": "git",
-                    "url": "https://github.com/mwillbanks/ZfcTwitterBootstrap",
-                    "reference": "master"
+                    "url": "https://github.com/mhujer/ZfcTwitterBootstrap.git",
+                    "reference": "zf2-stable-fixes"
                 } 
             }
         }
