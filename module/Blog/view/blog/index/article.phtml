@@ -42,30 +42,6 @@ if ($this->authService()->getAuth()->hasIdentity()) {
 }*/
 ?>
 
-<?php //echo $commentForm ?>
-
-
-<?php
-// within a view script
-$form = $this->commentForm;
-$form->prepare();
-// Render the opening tag
-echo $this->form()->openTag($form);
-?>
-
-<div class="form_element">
-<fieldset>
-
-<?php echo $this->formRow($form->get('name'));?>
-<?php echo $this->formRow($form->get('email'));?>
-<?php echo $this->formRow($form->get('text'));?>
-
-</fieldset>
-</div>
-
-<?php echo $this->formElement($form->get('submit'));?>
-
-<?php
-echo $this->form()->closeTag()?>
+<?php echo $this->formRenderer($this->commentForm); ?>
 
 </div>
