@@ -1,0 +1,27 @@
+<h1>Articles</h1>
+
+<table class="table table-stripped table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Published</th>
+            <th>Admin</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php if (count($this->articles)) {?>
+    <?php foreach ($this->articles as $article) {?>
+        <tr>
+            <td><?php echo $article['name']?></td>
+            <td><?php echo $article['published']?></td>
+            <td><?php echo $article['admin_name']?></td>
+            <td>
+                <a class="btn" href="<?php echo $this->url('admin/articles/update', array('controller' => 'article', 'action' => 'update', 'id' => $article['id']));?>">Update</a>
+                <a class="btn btn-danger" href="<?php echo $this->url('admin/articles/delete', array('action' => 'delete', 'id' => $article['id']));?>">Delete</a>
+            </td>
+        </tr>
+    <?php } ?>
+    <?php } ?>
+    </tbody>
+</table>

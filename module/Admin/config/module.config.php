@@ -3,11 +3,14 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Admin\Controller\Index' => 'Admin\Controller\IndexController',
+            'Admin\Controller\Articles' => 'Admin\Controller\ArticlesController',
+            //'Admin\Controller\Comments' => 'Admin\Controller\ArticlesCommentsController',
+            //'Admin\Controller\Admins' => 'Admin\Controller\AdminsController',
         ),
     ),
     'router' => array(
         'routes' => array(
-            'module-name-here' => array(
+            'admin' => array(
                 'type'    => 'Literal',
                 'options' => array(
                     // Change this to something specific to your module
@@ -22,10 +25,42 @@ return array(
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
-                    // This route is a sane default when developing a module;
-                    // as you solidify the routes for your module, however,
-                    // you may want to remove it and replace it with more
-                    // specific routes.
+                    'articles' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/articles',
+                            'defaults' => array(
+                                'controller' => 'articles',
+                            ),
+                        ),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'update' => array(
+                                'type'    => 'Segment',
+                                'options' => array(
+                                    'route'    => '/update/[:id]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'update'
+                                    ),
+                                ),
+                            ),
+                            'delete' => array(
+                                'type'    => 'Segment',
+                                'options' => array(
+                                    'route'    => '/delete/[:id]',
+                                    'constraints' => array(
+                                        'id' => '[0-9]+',
+                                    ),
+                                    'defaults' => array(
+                                        'action' => 'delete'
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
