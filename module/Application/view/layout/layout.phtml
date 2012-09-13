@@ -54,7 +54,11 @@
     </div>
 
     <div class="container">
-
+    
+    <?php d($this->messages);d('messages rendered');
+        foreach ($this->messages as $message) { ?>
+            <div class="alert alert-success"><?php echo $message; ?></div>
+        <?php } ?>
       <?php echo $this->content; ?>
 
       <hr>
