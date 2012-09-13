@@ -30,10 +30,23 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Skeleton Application') ?></a>
+          <a class="brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate('ZF2 Demo for ZFMeetup') ?></a>
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
+                <?php if ($this->plugin('zfcUserIdentity')->getAuthService()->hasIdentity()) { ?>
+              <li><a href="<?php //echo $this->url('admin-articles') ?>"><i class="icon-file icon-white"></i> Manage Articles</a></li>
+              <li><a href="<?php //echo $this->url('admin-admins') ?>"><i class="icon-user icon-white"></i> Manage Admins</a></li>
+            </ul>
+            <ul class="nav pull-right">
+              <li><span>Logged as <?php echo $this->plugin('zfcUserIdentity')->getAuthService()->getIdentity()->getEmail() ?></span></li>
+              <li><a href="<?php echo $this->url('zfcuser/logout')?>">
+                Logout <i class="icon-remove icon-white"></i></a></li>
+            <?php } else { ?>
+                </ul><ul class="nav pull-right">
+                <li><a href="<?php echo $this->url('zfcuser/login')?>">
+                Login <i class="icon-user icon-white"></i></a></li>
+            <?php } ?>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
