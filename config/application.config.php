@@ -5,6 +5,9 @@ return array(
 		'Blog',
 		'ZfcTwitterBootstrap',
 		'ZendDeveloperTools',
+		'ZfcBase',
+		'ZfcUser',
+		'Admin',
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(

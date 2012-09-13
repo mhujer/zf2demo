@@ -12,7 +12,9 @@
         "php": ">=5.3.3",
         "zendframework/zendframework": "dev-master",
         "bjyoungblood/BjyProfiler": "dev-master",
-        "ZfcTwitterBootstrap": "master"
+        "ZfcTwitterBootstrap": "master",
+		"ZfcBase" : "master",
+		"ZfcUser" : "master"
     },
     "repositories": [
         {
@@ -26,6 +28,31 @@
                     "reference": "zf2-stable-fixes"
                 } 
             }
+        },
+		{
+            "type": "package",
+            "package": {
+                "version": "master",
+                "name": "ZfcBase",
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/ZF-Commons/ZfcBase.git",
+                    "reference": "master"
+                } 
+            }
+        },
+		{
+            "type": "package",
+            "package": {
+                "version": "master",
+                "name": "ZfcUser",
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/ZF-Commons/ZfcUser.git",
+                    "reference": "master"
+                } 
+            }
         }
+		
     ]
 }
