@@ -21,9 +21,14 @@ class Article extends Form
             'label' => 'Name',
         )));
         
-        $this->add(new El\Textarea('text', array(
+        $this->add($text = new El\Textarea('text', array(
             'label' => 'Text',
         )));
+        $text->setAttributes(
+        	array(
+        		'cols' => 80,
+		    	'rows' => 20,
+        	));
         
         $submit = new El\Submit('submit');
         $submit->setLabel('Send');
