@@ -31,11 +31,9 @@ class Module implements AutoloaderProviderInterface
 
     public function handleFlashMessages(\Zend\Mvc\MvcEvent $e)
     {
-        
         $fm = $e->getApplication()->getServiceManager()->get('Zend\Mvc\Controller\Plugin\FlashMessenger');
         $e->getViewModel()->messages = array();
         if ($fm->hasMessages()) {
-            d('messages set');
             $e->getViewModel()->messages = $fm->getMessages();
         }
     }

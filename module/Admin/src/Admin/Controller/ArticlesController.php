@@ -9,9 +9,9 @@ class ArticlesController extends AbstractActionController
      * @var Articles
      */
     public $articlesTable;
+    
     public function indexAction()
     {
-        $articles = 
         $res['articles'] = $this->getArticlesTable()->getArticles();
         return $res;
     }
@@ -28,7 +28,7 @@ class ArticlesController extends AbstractActionController
                 $validatedData = $articleForm->getData();
                 $commentId = $this->getArticlesTable()->update($validatedData, array('id' => $articleId));
                 $this->flashMessenger()->addMessage('Article updated.');
-                $this->redirect()->toRoute('admin/articles');
+                return $this->redirect()->toRoute('admin/articles');
             }
         } else {
             $articleForm->setData($article);

@@ -11,7 +11,8 @@
     <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
                     ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
                     ->prependStylesheet($this->basePath() . '/css/style.css')
-                    ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+                    ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+                    ->prependStylesheet($this->basePath() . '/css/bootstrap-tuning.css') ?>
 
     <!-- Scripts -->
     <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
@@ -35,7 +36,7 @@
             <ul class="nav">
               <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
                 <?php if ($this->plugin('zfcUserIdentity')->getAuthService()->hasIdentity()) { ?>
-              <li><a href="<?php //echo $this->url('admin-articles') ?>"><i class="icon-file icon-white"></i> Manage Articles</a></li>
+              <li><a href="<?php echo $this->url('admin/articles') ?>"><i class="icon-file icon-white"></i> Manage Articles</a></li>
               <li><a href="<?php //echo $this->url('admin-admins') ?>"><i class="icon-user icon-white"></i> Manage Admins</a></li>
             </ul>
             <ul class="nav pull-right">
@@ -55,8 +56,7 @@
 
     <div class="container">
     
-    <?php d($this->messages);d('messages rendered');
-        foreach ($this->messages as $message) { ?>
+    <?php foreach ($this->messages as $message) { ?>
             <div class="alert alert-success"><?php echo $message; ?></div>
         <?php } ?>
       <?php echo $this->content; ?>
