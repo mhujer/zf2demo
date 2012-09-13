@@ -14,7 +14,8 @@
         "bjyoungblood/BjyProfiler": "dev-master",
         "ZfcTwitterBootstrap": "master",
 		"ZfcBase" : "master",
-		"ZfcUser" : "master"
+		"ZfcUser" : "master",
+		"ZFLadenka" : "master"
     },
     "repositories": [
         {
@@ -52,7 +53,18 @@
                     "reference": "master"
                 } 
             }
+        },
+		{
+            "type": "package",
+            "package": {
+                "version": "master",
+                "name": "ZFLadenka",
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/mhujer/ZFLadenka.git",
+                    "reference": "master"
+                } 
+            }
         }
-		
     ]
 }

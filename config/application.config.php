@@ -8,6 +8,7 @@ return array(
 		'ZfcBase',
 		'ZfcUser',
 		'Admin',
+		'ZFLadenka',
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(
