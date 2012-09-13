@@ -1,6 +1,8 @@
 <?php
 namespace Blog\Form;
 
+use Zend\Filter\FilterChain;
+
 use Zend\Form\Form;
 use Zend\Captcha;
 use Zend\Form\Element;
@@ -75,8 +77,17 @@ class AddCommentForm extends Form
         ));
         
         $inputFilter = new \Zend\InputFilter\InputFilter();
-        $inputFilter->add(new \Zend\InputFilter\Input('name'));
-        $inputFilter->add(new \Zend\InputFilter\Input('email'));
+        
+        $name = new \Zend\InputFilter\Input('name');
+        $filterChain = new FilterChain();
+        $filterChain->attachByName('StripTags');
+        $name->setFilterChain($filterChain);
+        $inputFilter->add($name);
+        
+        $email = new \Zend\InputFilter\Input('email');
+        $inputFilter->add($email);
+        
+        
         $inputFilter->add(new \Zend\InputFilter\Input('text'));
         $this->setInputFilter($inputFilter);
     }
